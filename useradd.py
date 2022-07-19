@@ -1,5 +1,5 @@
+#you shoud run this command as sudo user
 import os
-print("[-]you shoud run this command as sudo user ")
 o = open("/home/mohamed/Desktop/users.txt")
 li = o.readlines()
 for i in li :
