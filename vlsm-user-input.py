@@ -58,11 +58,15 @@ def get_subnet_details(num_hosts, network_address, convert_to_binary=False):
         last_valid_ip_binary = broadcast_ip_binary[:-1] + '0'
         last_valid_ip_dotted = '.'.join(str(int(last_valid_ip_binary[i:i+8], 2)) for i in range(0, 32, 8))
 
+        # Calculate the number of valid IPs
+        num_valid_ips = 2 ** host_bits - 2
+
         return (host_bits, subnet_mask_binary, subnet_mask_dotted, cidr_prefix, 
                 network_address_binary, subnet_address_binary, subnet_address_dotted,
                 first_valid_ip_binary, first_valid_ip_dotted,
                 last_valid_ip_binary, last_valid_ip_dotted,
-                broadcast_ip_binary, broadcast_ip_dotted)
+                broadcast_ip_binary, broadcast_ip_dotted,
+                num_valid_ips)
     else:
         return host_bits, subnet_mask_binary, subnet_mask_dotted, cidr_prefix
 
@@ -75,14 +79,14 @@ convert_to_binary = True
  network_address_binary, subnet_address_binary, subnet_address_dotted,
  first_valid_ip_binary, first_valid_ip_dotted,
  last_valid_ip_binary, last_valid_ip_dotted,
- broadcast_ip_binary, broadcast_ip_dotted) = get_subnet_details(num_hosts, network_address, convert_to_binary)
+ broadcast_ip_binary, broadcast_ip_dotted,
+ num_valid_ips) = get_subnet_details(num_hosts, network_address, convert_to_binary)
 
 print(f"Number of host bits required for {num_hosts} usable hosts: {host_bits}")
-#print(f"Subnet mask (binary): {subnet_mask_binary}")
 print(f"Subnet mask (dotted decimal): {subnet_mask_dotted}")
 print(f"CIDR prefix length: /{cidr_prefix}")
-#print(f"Network address (binary): {network_address_binary}")
 print(f"Subnet address (dotted decimal): {subnet_address_dotted}")
 print(f"First valid IP (dotted decimal): {first_valid_ip_dotted}")
 print(f"Last valid IP (dotted decimal): {last_valid_ip_dotted}")
 print(f"Broadcast IP (dotted decimal): {broadcast_ip_dotted}")
+print(f"Number of valid IPs: {num_valid_ips}")
