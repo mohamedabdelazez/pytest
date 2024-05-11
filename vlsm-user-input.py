@@ -82,11 +82,11 @@ convert_to_binary = True
  broadcast_ip_binary, broadcast_ip_dotted,
  num_valid_ips) = get_subnet_details(num_hosts, network_address, convert_to_binary)
 
-print(f"Number of host bits required for {num_hosts} usable hosts: {host_bits}")
-print(f"Subnet mask (dotted decimal): {subnet_mask_dotted}")
+print(f"Number of bits : {host_bits}")
+print(f"Subnet mask : {subnet_mask_dotted}")
 print(f"CIDR prefix length: /{cidr_prefix}")
-print(f"Subnet address (dotted decimal): {subnet_address_dotted}")
-print(f"First valid IP (dotted decimal): {first_valid_ip_dotted}")
-print(f"Last valid IP (dotted decimal): {last_valid_ip_dotted}")
-print(f"Broadcast IP (dotted decimal): {broadcast_ip_dotted}")
+print(f"Subnet address : {subnet_address_dotted}")
+print(f"First valid IP : {first_valid_ip_dotted}")
+print(f"Last valid IP : {last_valid_ip_dotted}")
+print(f"Broadcast IP : {broadcast_ip_dotted}")
 print(f"Number of valid IPs: {num_valid_ips}")
